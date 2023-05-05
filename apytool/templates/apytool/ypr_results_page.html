@@ -1,0 +1,164 @@
+{% extends 'apytool/base.html' %}
+{% block head_content %}
+<style type="text/css">
+	.container{
+		border: 2px solid black;
+	}
+	.row{
+		border-bottom: 2px solid blue;
+	}
+	body{
+		background: #C0C0C0;
+	}
+	table{
+		width: 70% !important;
+	}
+	@media screen and (max-width: 700px){
+		table{
+			width: 100% !important;
+		}
+	}
+	caption{
+		caption-side: top;
+		text-align: center;
+	}
+</style>
+{% endblock %}
+{% block body_content %}
+<div class="container mt-5 mb-5 bg-white">
+	<div class="row justify-content-center pt-2 pb-2">
+		<h5>The report for your {{organism}} Farm</h5>
+	</div>
+	<div class="row justify-content-center pt-2 pb-2">
+		<h6>The species under consideration is</h6>&nbsp;<h6 style="color: cyan;">{{species}}</h6>&nbsp;<h6>cultivated for {{doc}} days.</h6>
+	</div>
+	<div class="row justify-content-center">
+		<table class="table table-hover table-dark">
+			<caption> THE ENTERED VALUES ARE TABULATED BELOW </caption>
+  			<thead>
+    			<tr>
+    			 	 <th scope="col">S. No</th>
+      				 <th scope="col">Parameter</th>
+      				 <th scope="col">Input value</th>
+    			</tr>
+  			</thead>
+  			<tbody>
+  				{% if organism == "Shrimps" %}
+    			<tr>
+      				<th scope="row">1</th>
+      				<td>Temperature</td>
+      				<td>{{ temperature }}</td>
+    			</tr>
+    			<tr>
+      				<th scope="row">2</th>
+      				<td>Stocking Density</td>
+      				<td>{{ stock_den }}</td>
+    			</tr>
+    			<tr>
+      				<th scope="row">3</th>
+      				<td>Salinity</td>
+      				<td>{{ salinity }}</td>
+    			</tr>
+    			<tr>
+      				<th scope="row">4</th>
+      				<td>pH</td>
+      				<td>{{ ph }}</td>
+    			</tr>
+    			<tr>
+      				<th scope="row">5</th>
+      				<td>Feed Quantity</td>
+      				<td>{{ fqn }}</td>
+    			</tr>
+    			<tr>
+      				<th scope="row">6</th>
+      				<td>Feed Quality</td>
+      				<td>{{ fq }}</td>
+    			</tr>
+    			{% endif %}
+    			{% if organism == "Seaweeds" %}
+    			<tr>
+      				<th scope="row">1</th>
+      				<td>Temperature</td>
+      				<td>{{ temperature }}</td>
+    			</tr>
+    			<tr>
+      				<th scope="row">2</th>
+      				<td>Stocking Density</td>
+      				<td>{{ stock_den }}</td>
+    			</tr>
+    			<tr>
+      				<th scope="row">3</th>
+      				<td>Intensity</td>
+      				<td>{{ intensity }}</td>
+    			</tr>
+    			<tr>
+      				<th scope="row">4</th>
+      				<td>Water depth</td>
+      				<td>{{ depth }}</td>
+    			</tr>
+    			<tr>
+      				<th scope="row">5</th>
+      				<td>Secchi depth</td>
+      				<td>{{ secchi }}</td>
+    			</tr>
+    			{% endif %}
+  			</tbody>
+		</table>
+	</div>
+	<div class="row justify-content-center pt-2 mb-2">
+		<h5>OBSERVATIONS</h5>
+	</div>
+	{% if organism == "Shrimps" %}
+	<div class="row justify-content-center pt-2 pb-2">
+		<h6 style="text-align: center">The growth rate of the shrimps is {{ gr }}gms/day</h6>
+	</div>
+	<div class="row justify-content-center pt-2 pb-2">
+		<div class="col">
+			<h6 style="text-align: center">The Estimated Final weight of shrimp after {{ doc }} days is {{ final_weight }} gms</h6>
+		</div>
+		<div class="col">
+			{% if final_weight > 15 %}
+			<h6 style="text-align: center; color: green;">OPTIMAL</h6>
+			{% else %}
+			<h6 style="text-align: center; color: red;">NON-OPTIMAL</h6>
+			{% endif %}
+		</div>
+	</div>
+	<div class="row justify-content-center pt-2 pb-2">
+		<div class="col">
+			<h6 style="text-align: center">The Estimated Feed Conversion Ratio of shrimp after {{ doc }} days is {{ fcr }}</h6>
+		</div>
+		<div class="col">
+			{% if fcr < 1.7 %}
+			<h6 style="text-align: center; color: green;">OPTIMAL</h6>
+			{% else %}
+			<h6 style="text-align: center; color: red;">NON-OPTIMAL</h6>
+			{% endif %}
+		</div>
+	</div>
+	<div class="row justify-content-center pt-2 pb-2">
+		<div class="col">
+			<h6 style="text-align: center">The Expected survival rate of shrimps after {{ doc }} days is {{ surv_shrimps }} shrimps/m2</h6>
+		</div>
+	</div>
+	<div class="row justify-content-center pt-2 pb-2">
+		<h6 style="text-align: center">The total Biomass production after {{ doc }} days is {{ biomass }} gms/m2</h6>
+	</div>
+	{% endif %}
+	{% if organism == "Seaweeds" %}
+	<div class="row justify-content-center pt-2 pb-2">
+		<h6 style="text-align: center">The growth rate of the seaweeds is {{ growth_rate }} %/day</h6>
+	</div>
+	<div class="row justify-content-center pt-2 pb-2">
+		<div class="col">
+			<h6 style="text-align: center">The Estimated Biomass per area of seaweeds after {{ doc }} days is {{ biomass }} Kg/m2</h6>
+		</div>
+	</div>
+	<div class="row justify-content-center pt-2 pb-2">
+		<div class="col">
+			<h6 style="text-align: center">The Estimated Biomass per raft (9 sq.m) of seaweeds after {{ doc }} days is {% widthratio 9 1 biomass %} Kgs</h6>
+		</div>
+	</div>
+	{% endif %}
+</div>
+{% endblock %}

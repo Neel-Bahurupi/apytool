@@ -1,0 +1,5 @@
+ADMIN LOGIN
+relative url: '/admin'
+User_id = apytool
+Password = apytool2022
+Email = apytool@gmail.com

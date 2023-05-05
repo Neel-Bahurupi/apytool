@@ -1,0 +1,106 @@
+{% extends 'apytool/base.html' %}
+{% load static %}
+{% block head_content %}
+<link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAA5Oj/AAwAuAAKEcQA3dz8ABomwgB8nP8A/ej5AHKGvwD9/P8AGkjFAExywwDl5/8AExiZAP7+7AABI9IA+O7/APnx8gD/+PgAeGzzABYpkABDatgAYX/eAIGF7wABAAoA/f7/AEk+2wBKduEAXGLjAD5LvwD58vUA+PD5AAAWpwAADW8AAACDAPnt/wDy8P8APjteANHJ5wCZlccA7efhAO3e5gD9//sAZoLqAF+C9wD5/eMAQF7FAN3R3QD59foAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAgICAgAAAAAAAAAAAAAAACUDAgAAAAAAAAAAAAAAAAkgJQAAAAAAAAAAAAAAAAIGKAAAAAAAAAAAAAAAAAAiAiUAAAAAAAAAAAAAAAAACQkJACUAAAAAAAAAAAAAAAkJBCUAACUAAAAAAAAAAAkPFiUAACUAAAAlAAAAAAACAgIhKCUAAAAlAAAAADAAAgICCQkNDCkAJQAAAAAAAAACCQkLHAkoJS8mAAAAAAAACQkbAgIJCQgXKxMAAAAABwAsCgICCQkCFRgaACMnJwAAJBQCAgkJAgIuBScnEQAAAAAAAAAqGQIdAScOEAAAAAAAAAAAAAAeEh8tJycnAMH/AADj/wAAx/8AAI//AACP/wAAi/8AAIb/AAAN3wAAA70AAAC/AACAHwAAgA8AAEAIAADAAQAA/AMAAP8BAAA=" rel="icon" type="image/x-icon" />
+<!-- <style type="text/css">
+	.trend-details{
+		margin: 0px auto;
+		margin-top: 10px;
+		border: 1px solid gray;
+		border-radius: 10px;
+		padding-bottom: 10px; 
+	}
+	li{
+        list-style-type: none;
+        color: red;
+	}
+</style> -->
+    <style>
+      .shr_form > h1 {
+      margin: 0 0 20px;
+      font-weight: 400;
+      color: #1c87c9;
+      }
+      .main-block {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #1c87c9;
+      }
+      .shr_form {
+      padding: 25px;
+      margin: 25px;
+      box-shadow: 0 2px 5px #f5f5f5; 
+      background: #f5f5f5; 
+      }
+      .fas {
+      margin: 25px 10px 0;
+      font-size: 72px;
+      color: #fff;
+      }
+      .fa-envelope {
+      transform: rotate(-20deg);
+      }
+      .fa-at , .fa-mail-bulk{
+      transform: rotate(10deg);
+      }
+      .shrform > textarea {
+      width: calc(100% - 18px);
+      padding: 8px;
+      margin-bottom: 20px;
+      border: 1px solid #1c87c9;
+      outline: none;
+      }
+      .shrform > input{
+        width: calc(100% - 18px);
+      padding: 8px;
+      margin-bottom: 20px;
+      border: 1px solid #1c87c9;
+      outline: none;
+      }
+      .shr_form > input::placeholder {
+      color: #666;
+      }
+      .shr_form > button {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background: #1c87c9; 
+      font-size: 16px;
+      font-weight: 400;
+      color: #fff;
+      }
+      .shr_form > button:hover {
+      background: #2371a0;
+      }    
+      @media (min-width: 568px) {
+      .main-block {
+      flex-direction: row;
+      }
+      .left-part, .shr_form {
+      width: 50%;
+      }
+      }
+    </style>
+{% endblock %}
+{% block body_content %}
+ <div class="main-block">
+      <div class="left-part">
+        <i class="fas fa-envelope"></i>
+        <i class="fas fa-at"></i>
+        <i class="fas fa-mail-bulk"></i>
+      </div>
+      <form class="shr_form" method="POST">
+        <h1>Fill the <img src="{% static 'images/shrimp_2.png' %}" width="75px"> details</h1>
+        {% csrf_token %}
+        <div class="info">
+          {% for field in form %}
+            <span>{{ field.label_tag }}</span>{{ field }}
+          {% endfor %}
+        </div>
+          <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+{% endblock %}

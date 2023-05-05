@@ -1,0 +1,205 @@
+{% extends 'apytool/base.html' %}
+
+{% block head_content %}
+<link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAA5Oj/AAwAuAAKEcQA3dz8ABomwgB8nP8A/ej5AHKGvwD9/P8AGkjFAExywwDl5/8AExiZAP7+7AABI9IA+O7/APnx8gD/+PgAeGzzABYpkABDatgAYX/eAIGF7wABAAoA/f7/AEk+2wBKduEAXGLjAD5LvwD58vUA+PD5AAAWpwAADW8AAACDAPnt/wDy8P8APjteANHJ5wCZlccA7efhAO3e5gD9//sAZoLqAF+C9wD5/eMAQF7FAN3R3QD59foAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAgICAgAAAAAAAAAAAAAAACUDAgAAAAAAAAAAAAAAAAkgJQAAAAAAAAAAAAAAAAIGKAAAAAAAAAAAAAAAAAAiAiUAAAAAAAAAAAAAAAAACQkJACUAAAAAAAAAAAAAAAkJBCUAACUAAAAAAAAAAAkPFiUAACUAAAAlAAAAAAACAgIhKCUAAAAlAAAAADAAAgICCQkNDCkAJQAAAAAAAAACCQkLHAkoJS8mAAAAAAAACQkbAgIJCQgXKxMAAAAABwAsCgICCQkCFRgaACMnJwAAJBQCAgkJAgIuBScnEQAAAAAAAAAqGQIdAScOEAAAAAAAAAAAAAAeEh8tJycnAMH/AADj/wAAx/8AAI//AACP/wAAi/8AAIb/AAAN3wAAA70AAAC/AACAHwAAgA8AAEAIAADAAQAA/AMAAP8BAAA=" rel="icon" type="image/x-icon" /><!-- favicon image -->
+<style type="text/css">
+	body{
+		background-color: #F0F0F0;
+	}
+	.div-head{
+		padding-top: 10px;
+		padding-bottom: 10px;
+		padding-left: 10px;
+		border-bottom: solid blue 4px;
+		font-weight: bold;
+	}
+    .data_contain{
+        background: #FFFFFF;
+    }
+    .data_button{
+        color: purple;
+        border: 2px solid purple;
+        border-radius: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px; 
+        width: 80%;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .data_button:hover{
+        color: white;
+        background: purple;
+        border-radius: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px; 
+    }
+    #data_table{
+        width: 100%;
+    }
+    #table_head{
+        background: #333333;
+        color: white;
+        font-size: bold;
+    }
+    #data_table{
+        caption-side: top;
+    }
+    #data_table th{
+        width: 50%;
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    #data_table tr{
+        border-bottom: 1px solid gray;
+        border-bottom-right-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+    #data_table td{
+        width: 50%;
+        text-align: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    svg{
+        width: 100%;
+    }
+</style>
+<script src="https://kit.fontawesome.com/9a604d6091.js" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block body_content %}
+<div class="container data_contain mt-lg-5 mt-md-5 mt-xs-1">
+    <div class="row div-head justify-content-center">
+        Trends and pattern Analysis
+    </div>
+    <div class="row justify-content-center pt-1">
+        <div class="col-lg-4 col-md-6 col-xs">
+            <table id="data_table">
+                <tr id="table_head">
+                    <th>
+                        Parameter
+                    </th>
+                    <th>
+                        Value
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        Production Growth rate
+                    </td>
+                    <td>
+                        {{ prod_growth_rate }} %
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="background: #777777">Instability Analysis</td>
+                </tr>
+                <tr>
+                    <td>
+                        Area CV (%) 
+                    </td>
+                    <td>
+                        {{ cv_analysis.0 }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Production CV (%) 
+                    </td>
+                    <td>
+                        {{cv_analysis.1 }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Productivity CV (%) 
+                    </td>
+                    <td>
+                        {{ cv_analysis.2 }}
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="background: #999999">APY Correlation</td>
+                </tr>
+                <tr>
+                    <td>
+                        Area Dependence
+                    </td>
+                    <td>
+                        {{ cv_analysis.3 }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Area Effect
+                    </td>
+                    <td>
+                        {{ cv_analysis.4 }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-lg-3 col-md-6 col-xs align-items-center">
+            <div class="row justify-content-center  mt-lg-4 pt-lg-5 mt-md-4 pt-md-5 mt-xs-0 pt-xs-0">
+                <button type="button" class="data_button" data-toggle="modal" data-target="#productionmodal"> Production visual </button>
+                <button type="button" class="data_button" data-toggle="modal" data-target="#areamodal">Area visual </button>
+                <button type="button" class="data_button" data-toggle="modal" data-target="#productivitymodal"> Productivity visual </button>
+            </div>
+        </div>
+    </div>
+<!--     <div class="row justify-content-center mt-lg-2 pt-lg-2 mt-md-2 pt-md-2 mt-xs-0 pt-xs-0">
+        <button class="btn btn-danger">Report Discrepancy</button>
+    </div> -->
+</div>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="productionmodal" tabindex="-1" role="dialog" aria-labelledby="productionModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="productionModalLabel">Production Trend and pattern</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        .{{ production_graph|safe }}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="areamodal" tabindex="-1" role="dialog" aria-labelledby="areamodalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="areaModalLabel">Area Trend and pattern</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{ area_graph|safe }}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="productivitymodal" tabindex="-1" role="dialog" aria-labelledby="productivitymodalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="productivityModalLabel">Productivity Trend and pattern</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{ productivity_graph|safe }}
+      </div>
+    </div>
+  </div>
+</div>
+**Reloading the page will get you back to Details page
+{% endblock %}

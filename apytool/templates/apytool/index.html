@@ -1,0 +1,150 @@
+{% extends 'apytool/base.html' %}
+{% load static %}
+{% block head_content %}
+<link href="data:image/x-icon;base64,AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAAAAAAAA5Oj/AAwAuAAKEcQA3dz8ABomwgB8nP8A/ej5AHKGvwD9/P8AGkjFAExywwDl5/8AExiZAP7+7AABI9IA+O7/APnx8gD/+PgAeGzzABYpkABDatgAYX/eAIGF7wABAAoA/f7/AEk+2wBKduEAXGLjAD5LvwD58vUA+PD5AAAWpwAADW8AAACDAPnt/wDy8P8APjteANHJ5wCZlccA7efhAO3e5gD9//sAZoLqAF+C9wD5/eMAQF7FAN3R3QD59foAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAgICAgAAAAAAAAAAAAAAACUDAgAAAAAAAAAAAAAAAAkgJQAAAAAAAAAAAAAAAAIGKAAAAAAAAAAAAAAAAAAiAiUAAAAAAAAAAAAAAAAACQkJACUAAAAAAAAAAAAAAAkJBCUAACUAAAAAAAAAAAkPFiUAACUAAAAlAAAAAAACAgIhKCUAAAAlAAAAADAAAgICCQkNDCkAJQAAAAAAAAACCQkLHAkoJS8mAAAAAAAACQkbAgIJCQgXKxMAAAAABwAsCgICCQkCFRgaACMnJwAAJBQCAgkJAgIuBScnEQAAAAAAAAAqGQIdAScOEAAAAAAAAAAAAAAeEh8tJycnAMH/AADj/wAAx/8AAI//AACP/wAAi/8AAIb/AAAN3wAAA70AAAC/AACAHwAAgA8AAEAIAADAAQAA/AMAAP8BAAA=" rel="icon" type="image/x-icon" /><!-- favicon image -->
+	<style type="text/css">
+		.index-info{
+			width: 80%;
+			margin: 0px auto;
+			margin-top: 10px;
+			border: 1px solid white; 
+			box-shadow: 1px 2px 3px 4px gray;
+			border-radius: 10px;
+		}
+		.sel-button{
+			justify-content: center;
+			border: 1px solid white;
+			border-bottom-right-radius: 10px;
+			border-bottom-left-radius: 10px; 
+			width: auto;
+		}
+		.sel-button-one{
+			background: #0099ff;
+			color: white;
+			text-align: center;
+			border-radius: 15px;
+			padding: 3px 10px 3px 10px;
+			font-weight: bold;
+			max-width: 80%;
+
+		}
+		.sel-button-two{
+			color: #0099ff;
+			text-align: center;
+			border: 3px solid #0099ff;
+			border-radius: 15px;
+			padding: 3px 10px 3px 10px;
+			background: white;
+			font-weight: bold;
+			max-width: 80%;
+		}
+		.method-title{
+			justify-content: center;
+			font-weight: bold;
+			font-size: 110%;
+			padding-top: 3px;
+			padding-bottom: 3px; 
+		}
+		ul{
+			list-style-type: none;
+		}
+		.method-title{
+			border-bottom: 2px solid black;
+		}
+		img{
+			max-width: 20%;
+		}
+		@media only screen and (max-width: 600px) {
+        img {
+            max-width: 40%;
+            }
+        }
+	</style>
+{% endblock %}
+
+
+{% block body_content %}
+<div id="main_1" style="padding: 0px; margin: 0px; display: none;">
+<div class="container index-info">
+	<div class="row method-title">
+		Area-Yield-Production Trends 
+	</div>
+	<div class="row">
+		<ul>
+			<li><b>Aim</b>: This is required for the instability and risk assessment,
+				by highlighting the regions having the negative growth
+				pattern or high variability of production. The more the
+				risk, higher is the danger associated with investments
+				made.
+			</li>
+			<li><b>Advantage</b>: The regions can now be scaled on the
+				basis of growth rate, the higher returns associated with
+				regions of high and positive growth rate will attract huge
+				investments.</li>
+			<li><b>Limitation</b>: It has a limitation that it does not directly
+				give the reasons as to why such trends are occurring.
+				It is the job of the researcher to accumulate the data
+				about the economy and willingness of the farmers by
+				conducting onsite research and relate the two.
+			</li>
+		</ul>
+	</div>
+	<div class="row sel-button">
+		<div class="sel-button-one">
+			<a class="nav-link" style="padding: 0px; color: white;" href="{% url 'shrimp_trend_page' %}">Go to the Tool</a>
+		</div>
+	</div>
+	<div class="row method-title">
+		Yield-Parameter Relationship
+	</div>
+	<div class="row">
+		<ul>
+			<li>
+				<b>Aim</b>: It involves establishment
+				and verification of relations relating the obtained Yield
+				with the parameters affecting the yield. It is important
+				to figure out the optimum value of these parameters to
+				maximise the Yield. Maximising the yield is the first step
+				to make the production sustainable in terms of land cover
+				under cultivation.
+			</li>
+			<li>
+				<b>Advantage</b>: The modelling of the variation of the Yield
+				with the parameters can be incorporated within further
+				advancements for development of a fully-fledged working
+				software as all-time farm observation system.
+			</li>
+			<li>
+				<b>Limitation</b>: Huge amount of real-time survival and
+				growth data is required for the modelling purposes. The
+				farmers should be made techno-friendly to make this
+				research plausible in reality.
+			</li>
+		</ul>
+	</div>
+	<div class="row sel-button">
+		<div class="sel-button-two">
+			<a class="nav-link" style="padding: 0px;" href="{% url 'shrimps_seaweeds_sel_page' %}">Go to the Tool</a>
+		</div>
+	</div>
+	</div>
+
+<!-- <svg style="position: absolute; bottom: 0px;" class=" d-sm-none d-xs-none d-md-none d-lg-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="0.5" d="M0,64L21.8,58.7C43.6,53,87,43,131,48C174.5,53,218,75,262,74.7C305.5,75,349,53,393,53.3C436.4,53,480,75,524,101.3C567.3,128,611,160,655,160C698.2,160,742,128,785,117.3C829.1,107,873,117,916,106.7C960,96,1004,64,1047,48C1090.9,32,1135,32,1178,37.3C1221.8,43,1265,53,1309,64C1352.7,75,1396,85,1418,90.7L1440,96L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z"></path></svg> -->
+</div>
+
+<div id="start" class="container mt-5 pt-5">
+	<div class="row justify-content-center">
+			<img src="{% static 'images/shrimp.png' %}">
+	</div>
+	<div class="row justify-content-center">
+		<h1 style="text-align: center;" class="pt-lg-5 pt-md-2 pt-xs-0">APY COMPUTE TOOL</h1>
+	</div>
+</div>
+<script type="text/javascript">
+	function showmainpage(){
+		document.getElementById('start').style.display  = "none";
+		document.getElementById('main_1').style.display  = "block";
+	};
+	setTimeout(showmainpage, 5000);
+</script>
+{% endblock %}
